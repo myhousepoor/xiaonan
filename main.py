@@ -1,12 +1,6 @@
 import xlrd
 from xlrd import xldate_as_tuple
 import datetime
-'''
-xlrd中单元格的数据类型
-数字一律按浮点型输出，日期输出成一串小数，布尔型输出0或1，所以我们必须在程序中做判断处理转换
-成我们想要的数据类型
-0 empty,1 string, 2 number, 3 date, 4 boolean, 5 error
-'''
 class ExcelData():
     # 初始化方法
     def __init__(self, data_path,baseData):
@@ -38,11 +32,10 @@ class ExcelData():
             # print(c_cell)
         return datas
 
-        # 定义一个读取excel表的方法
+        # 计算不在data_path的中的数据。
     def readExcelAndcalc(self):
         # 定义一个空列表
         datas = []
-
         f=self.data_path +".txt"
         for i in range(1, self.rowNum):
             c_cell = self.table.cell_value(i, 4)
