@@ -46,7 +46,7 @@ class ExcelData():
                     file.write(c_cell+"\n")
         return datas
 if __name__ == "__main__":
-    data_path = "./20210120-大名一般诊疗费查询.xlsx"
+    data_path = "./20210120-xxxx.xlsx"
     get_data = ExcelData(data_path,"")
     datas = get_data.readExcel()
     dataschecks =["北峰.xlsx","大街.xlsx","旧治.xlsx","沙圪塔.xlsx","营镇.xlsx","金滩镇.xlsx","龙王庙.xlsx","埝头.xlsx","孙甘店.xlsx","束馆镇.xlsx","王村乡.xlsx","西付集.xlsx","铺上乡.xlsx", "万堤.xlsx","大名镇.xlsx","张集 .xlsx","杨桥.xlsx","红庙乡.xlsx","西未庄.xlsx","黄金堤.xlsx"]
