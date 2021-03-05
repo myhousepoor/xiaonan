@@ -23,22 +23,22 @@ class ExcelData():
         self.baseData = baseData
 
     # 定义一个读取excel表的方法
-    def readExcel(self):
+    def readExcel(self,baseCol):
         # 定义一个空列表
         datas = {}
         for i in range(1, self.rowNum):
-            c_cell = self.table.cell_value(i, 4)
+            c_cell = self.table.cell_value(i, baseCol)
             datas[c_cell]=c_cell
             # print(c_cell)
         return datas
 
         # 计算不在data_path的中的数据。
-    def readExcelAndcalc(self):
+    def readExcelAndcalc(self,calcCol):
         # 定义一个空列表
         datas = []
         f=self.data_path +".txt"
         for i in range(1, self.rowNum):
-            c_cell = self.table.cell_value(i, 4)
+            c_cell = self.table.cell_value(i, calcCol)
             # d[c_cell]=c_cell
             if self.baseData.get(c_cell,-1) != -1:
                 datas.append(c_cell)
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     baseCol =4
     calcCol =4
     get_data = ExcelData(data_path,"")
-    datas = get_data.readExcel()
+    datas = get_data.readExcel(baseCol)
     dataschecks =["北峰.xlsx","大街.xlsx","旧治.xlsx","沙圪塔.xlsx","营镇.xlsx","金滩镇.xlsx","龙王庙.xlsx","埝头.xlsx","孙甘店.xlsx","束馆镇.xlsx","王村乡.xlsx","西付集.xlsx","铺上乡.xlsx", "万堤.xlsx","大名镇.xlsx","张集 .xlsx","杨桥.xlsx","红庙乡.xlsx","西未庄.xlsx","黄金堤.xlsx"]
     # dataschecks =["北峰.xlsx"]
     lendatas = len(dataschecks)
@@ -58,5 +58,5 @@ if __name__ == "__main__":
     for datascheck in dataschecks:
         cur_data = ExcelData(datascheck,datas)
         #查询并写入记事本
-        cur_datas = cur_data.readExcelAndcalc()
+        cur_datas = cur_data.readExcelAndcalc(calcCol)
 
